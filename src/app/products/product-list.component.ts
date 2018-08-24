@@ -16,6 +16,8 @@ export class ProductListComponent implements OnInit {
   showImageCount: number = 0;
   showImageButtonTitle: string = "Show Image";
 
+  errorMessage: string = "Error";
+
   filteredProducts: IProduct[];
   _listFilter: string;
   get listFilter(): string {
