@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pageTitle: string = 'Except When Both';
-  bodyText: string = 'Now this is a story all about how // my life got flipped, turned upside down // And I\'d like to take a minute, just sit right there // and I\'ll tell you how I became the prince of a town called BelAir.';
+  pageTitle: string = 'Shop.com';
+  bodyText: string = 'Welcome to Shop.com!';
 }
 console.log("#angbadang.");

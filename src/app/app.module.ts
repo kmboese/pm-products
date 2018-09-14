@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component'
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
+import { StarComponent } from './shared/star.component';
 
 @NgModule({
   // Local modules
@@ -12,6 +13,7 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
     AppComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
+    StarComponent,
   ],
   // External Angular modules
   imports: [
