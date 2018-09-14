@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // Import the Product interface
 import { IProduct } from './product';
-import { StarComponent } from '../shared/star.component';
 
 @Component({
   selector: 'pm-products',
