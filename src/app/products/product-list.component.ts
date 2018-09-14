@@ -10,7 +10,7 @@ import { StarComponent } from '../shared/star.component';
 })
 export class ProductListComponent implements OnInit {
   tableTitle: string = 'Product List';
-  imageWidth: number = 50;
+  imageWidth: number = 150;
   imageMargin: number = 2;
   // Indicates whether the images in the table are displayed at full resolution
   showImage: boolean = true;
@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
     // Save the list of filtered products
     this.filteredProducts = this._listFilter ? this.performFilter(this._listFilter) : this.products;
 
-    console.log(`listFilter changed to ${this.listFilter}`);
+    //console.log(`listFilter changed to ${this.listFilter}`);
   }
 
   
@@ -39,39 +39,39 @@ export class ProductListComponent implements OnInit {
   products: IProduct[] = [
     {
       "productId": 1,
-      "productName": "Trebuchet",
-      "productCode": "GDN-0011",
-      "releaseDate": "March 19, 2018",
-      "description": "A seige weapon that can launch a 90kg payload over 300 meters.",
-      "price": 19.95,
-      "starRating": 3.2,
-      "imageUrl": "https://pocahontastimes.com/wp-content/uploads/2017/10/trebuchet.jpg"
+      "productName": "Huawei Matebook X Pro",
+      "productCode": "H-MXP-i5-256GB",
+      "releaseDate": "June 10, 2018",
+      "description": "Ripping off Apple with a wink and a nod.",
+      "price": 1099.99,
+      "starRating": 4.5,
+      "imageUrl": "https://www.notebookcheck.net/fileadmin/Notebooks/Huawei/Matebook_X_Pro_i5/huawei_matebook_x_pro_thin_body_4.png"
     },
     {
       "productId": 2,
-      "productName": "Garden Cart",
-      "productCode": "GDN-0023",
-      "releaseDate": "March 18, 2018",
-      "description": "15 gallon capacity rolling garden cart",
-      "price": 32.99,
-      "starRating": 2.1,
-      "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
+      "productName": "Dell XPS 13",
+      "productCode": "9370",
+      "releaseDate": "January 15, 2018",
+      "description": "One of the best premium Windows ultraportables around.",
+      "price": 1199.99,
+      "starRating": 4.0,
+      "imageUrl": "https://www.bhphotovideo.com/images/images1000x1000/dell_xps9370_7002slv_xps_i7_8550u_8gb_256ssd_1398207.jpg"
     },
     {
       "productId": 3,
-      "productName": "Electric Guitar",
-      "productCode": "GDN-1157",
-      "releaseDate": "April 15, 2018",
-      "description": "Stringed instrument",
-      "price": 799.99,
-      "starRating": 4.3,
-      "imageUrl": "https://andertons-productimages.imgix.net/88675-tmpD520.jpg?w=1200&h=630&fit=fill&bg=FFFFFF&auto=compress&auto=format"
+      "productName": "Macbook Adorable",
+      "productCode": "MB-A-12",
+      "releaseDate": "June 6, 2017",
+      "description": "The teeniest Apple laptop. Lighter than the Air, but the Air still exists somehow.",
+      "price": 1299.99,
+      "starRating": 4.6,
+      "imageUrl": "https://store.storeimages.cdn-apple.com/4981/as-images.apple.com/is/image/AppleInc/aos/published/images/m/ac/macbook/select/macbook-select-space-gray-201706?wid=452&hei=420&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1505775431709"
     }
   ];
 
   constructor() {
     this.filteredProducts = this.products;
-    this._listFilter = 'cart';
+    this._listFilter = '';
   }
 
   //OnInit() lifecycle hook startup method

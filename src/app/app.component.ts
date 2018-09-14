@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pageTitle: string = 'Shop.com';
-  bodyText: string = 'Welcome to Shop.com!';
+  pageTitle: string = 'Laptops.com';
+  bodyText: string = 'The web\'s home for portable computing!';
 }
 console.log("#angbadang.");
