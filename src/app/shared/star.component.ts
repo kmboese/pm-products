@@ -7,14 +7,13 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 
 export class StarComponent implements OnChanges{
-    numberOfStars: number = 5;
-    widthMultiplier: number = 75; // Multiplier used to display star images
+    _numberOfStars: number = 5;
+    _widthMultiplier: number = 75; // Multiplier used to display star images
 
-    @Input()
-    rating: number;
-    starWidth: number = this.widthMultiplier;
+    @Input() rating: number;
+    starWidth: number = this._widthMultiplier;
 
     ngOnChanges(): void {
-        this.starWidth = this.rating * this.widthMultiplier / this.numberOfStars;
+        this.starWidth = this.rating * this._widthMultiplier / this._numberOfStars;
     }
 }
