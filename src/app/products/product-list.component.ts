@@ -96,5 +96,13 @@ export class ProductListComponent implements OnInit {
     return this.products.filter((product: IProduct) =>
       product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
+
+  // Performs an action based on the event emitted when a product rating is clicked
+  onRatingClicked(message: string): void {
+    this.tableTitle = 'Product List: ' + message;
+  }
+
 }
+
+  
 
