@@ -8,7 +8,7 @@ import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core
 
 export class StarComponent implements OnChanges{
     _numberOfStars: number = 5;
-    _starWidth: number = 86; // Multiplier used to display star images
+    _starWidth: number = 70; // Multiplier used to display star images
 
     @Input() rating: number;
     // Constant used to properly display the star rating
