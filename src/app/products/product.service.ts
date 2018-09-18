@@ -1,4 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 import { IProduct } from './product';
 
@@ -7,39 +10,40 @@ import { IProduct } from './product';
     providedIn: 'root'
 })
 export class ProductService {
+    // Use a local JSON file for the tutorial, instead of an actual web page
+    private productUrl = 'api/products/products.json';
+
+    // Inject the Angular HttpClient for use in our custom service
+    constructor(private http: HttpClient) {}
     
-    getProducts(): IProduct[] {
-        return [
-        {
-            "productId": 1,
-            "productName": "Huawei Matebook X Pro",
-            "productCode": "H-MXP-i5-256GB",
-            "releaseDate": "June 10, 2018",
-            "description": "Ripping off Apple with a wink and a nod.",
-            "price": 1099.99,
-            "starRating": 4.5,
-            "imageUrl": "https://www.notebookcheck.net/fileadmin/Notebooks/Huawei/Matebook_X_Pro_i5/huawei_matebook_x_pro_thin_body_4.png"
-          },
-          {
-            "productId": 2,
-            "productName": "Dell XPS 13",
-            "productCode": "9370",
-            "releaseDate": "January 15, 2018",
-            "description": "One of the best premium Windows ultraportables around.",
-            "price": 1199.99,
-            "starRating": 4.0,
-            "imageUrl": "https://www.bhphotovideo.com/images/images1000x1000/dell_xps9370_7002slv_xps_i7_8550u_8gb_256ssd_1398207.jpg"
-          },
-          {
-            "productId": 3,
-            "productName": "Macbook Adorable",
-            "productCode": "MB-A-12",
-            "releaseDate": "June 6, 2017",
-            "description": "The teeniest Apple laptop. Lighter than the Air, but the Air still exists somehow.",
-            "price": 1299.99,
-            "starRating": 4.6,
-            "imageUrl": "https://store.storeimages.cdn-apple.com/4981/as-images.apple.com/is/image/AppleInc/aos/published/images/m/ac/macbook/select/macbook-select-space-gray-201706?wid=452&hei=420&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1505775431709"
-          } 
-        ];
+    getProducts(): Observable<IProduct[]> {
+        /* Using the IProduct[] identifier for the http get() method 
+        * causes the returned data to be automatically mapped to an IProduct array from the JSON file.
+
+        * tap() allows for a read-only view into the Observable data without * * modifying it.
+        * catchError() catches any errors returned from the http request. 
+        */
+        return this.http.get<IProduct[]>(this.productUrl).pipe(
+            //tap(data => console.log('All: ' + JSON.stringify(data))),
+            catchError(this.handleError)
+        );
+    }
+
+    private handleError(err: HttpErrorResponse) {
+        /* In a real-world app, we may send the server to some remote logging infrastructure instead of just logging it to the console.
+        */
+       let errorMessage = '';
+       if (err.error instanceof ErrorEvent) {
+           // A client-side or network error occurred. Handle it accordingly.
+           errorMessage = `An error occurred: ${err.error.message}`;
+       }
+       else {
+           /* The backend returned an unsuccessful reponse code. The response 
+           * body may contain clues as to what went wrong. 
+           */
+          errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+       }
+       console.log(errorMessage);
+       return throwError(errorMessage);
     }
 }

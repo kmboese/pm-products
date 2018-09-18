@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
   showImageCount: number = 0;
   showImageButtonTitle: string = "Show Image";
 
-  errorMessage: string = "Error";
+  errorMessage: string = "";
 
   _listFilter: string;
   get listFilter(): string {
@@ -45,10 +45,14 @@ export class ProductListComponent implements OnInit {
   //OnInit() lifecycle hook startup method
   ngOnInit(): void {
     console.log('ProductListComponent: in OnInit lifecycle');
-    // Initialize the product array during the OnInit lifecycle hook, not in the constructor
-    this.products = this.productService.getProducts();
-    // Initialize the filtered products array with all products at the beginning
-    this.filteredProducts = this.products;
+    // Initialize the product array during the OnInit lifecycle hook, not in the constructor. Note that Observables don't emit data until they are subscribed to.
+    this.productService.getProducts().subscribe(
+      products => {
+        this.products = products;
+        this.filteredProducts = this.products;
+      },
+      error => this.errorMessage = <any>error
+    );
   }
 
   // Function to show an image thumbnail whenever the corresponding UI button is pressed
